@@ -70,20 +70,23 @@ class FoodTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return meals[section].food.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath)
+        
+        
+        cell.textLabel?.text = "\(meals[indexPath.section].food[indexPath.row].name)"
+        cell.detailTextLabel?.text = meals[indexPath.section].food[indexPath.row].description
+        cell.showsReorderControl = true
+      
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        <#code#>
+        return meals[section].name
     }
 
     /*
